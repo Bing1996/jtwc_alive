@@ -1,1 +1,3 @@
 # jtwc_alive
+
+jtwc_alive is a Python-based solution designed to dynamically parse the latest tropical cyclone (hurricane) tracking data from the Joint Typhoon Warning Center. It efficiently extracts key information such as cyclone trajectory, intensity, and wind radius, and serves this data in a RESTful manner for backend services. Additionally, jtwc_alive can be integrated as a standalone Python module for further development and customization.
