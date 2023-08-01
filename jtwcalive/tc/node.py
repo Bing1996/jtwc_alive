@@ -10,11 +10,10 @@ class Node:
     Node Model
     """
 
-    def __init__(self, _time: datetime, lat, lon, pres, ws, **kwargs):
+    def __init__(self, _time: datetime, lat, lon, ws, **kwargs):
         self.time = _time
         self.lat = lat
         self.lon = lon
-        self.pres = pres
         self.ws = ws
 
         for k, v in kwargs.items():
