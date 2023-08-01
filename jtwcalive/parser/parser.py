@@ -1,4 +1,5 @@
 from jtwcalive.tc.tc import TC
+from jtwcalive.tc.quadrant import WindQuadrants
 
 from pathlib import Path
 import re
@@ -6,6 +7,7 @@ import re
 
 class Parser:
     def __init__(self, report_txt: str):
+        print(Path(".").absolute())
         if not Path(report_txt).exists():
             raise FileNotFoundError(f"{report_txt} not found!")
 
@@ -53,12 +55,17 @@ class Parser:
         )
 
         for data in forecast_data:
-            tc.append(
-                tc.create_node(
+            node = tc.create_node(
                     time=data['time'],
                     lat=data['position'].split()[0],
                     lon=data['position'].split()[1],
                     ws=data['max_wind'],
                 )
-            )
 
+            node.radii64 = WindQuadrants.from_str(data['wind_radii'][0])
+            node.radii50 = WindQuadrants.from_str(data['wind_radii'][1])
+            node.radii34 = WindQuadrants.from_str(data['wind_radii'][2])
+
+            tc.append(node)
+
+        return tc

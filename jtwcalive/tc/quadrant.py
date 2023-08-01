@@ -2,7 +2,6 @@
 Four Quadrants of the wind radii
 """
 from dataclasses import dataclass
-from collections import UserDict
 
 
 @dataclass
@@ -40,7 +39,3 @@ class WindQuadrants:
             SW=int(_list[3]),
             NW=int(_list[4]),
         )
-
-
-class Radii(UserDict):
-    pass
